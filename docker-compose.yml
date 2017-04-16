@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  server:
+    image: "morrisjobke/webdav"
+    volumes:
+      - "./data:/var/webdav"
+    expose:
+      - "80"
+    environment:
+      USERNAME: test
+      PASSWORD: test
+  client:
+    build: client
+    cap_add: 
+      - SYS_ADMIN
+    devices:
+      - "/dev/fuse"
